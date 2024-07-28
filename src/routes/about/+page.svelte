@@ -20,8 +20,11 @@
 
   let recorder: MediaRecorder;
 
+  //audio false to prevent echo
+  //https://mdn.github.io/dom-examples/media/web-dictaphone/
+
   browser && navigator.mediaDevices
-    .getUserMedia({ video: { facingMode: "user" }, audio: true })
+    .getUserMedia({ video: { facingMode: "user" }, audio: false })
     .then((stream) => {
       const video = document.querySelector("video");
       if(video) video.srcObject = stream;
@@ -31,7 +34,7 @@
         let blob = e.data;
         let type = blob.type;
         //TODO: post blob to api endpoint to be saved
-
+        //TODO: save in to chunks[] ?
         let url = URL.createObjectURL(blob);
         playBlobVideo(url)
         debugger;
