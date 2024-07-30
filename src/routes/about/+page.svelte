@@ -11,12 +11,15 @@
 	<video autoplay></video>
   <button on:click={startRecord}>Start</button>
   <button on:click={stopRecording}>Stop</button>
+  <span>{countUpToMinute}</span>
 </div>
 
 
 
 <script lang="ts">
   import { browser } from "$app/environment";
+
+  let countUpToMinute = "0:00" //TODO: make videos 1 minute exactly
 
   let recorder: MediaRecorder;
 
